@@ -244,7 +244,7 @@ extern(System)
            threads from the runtime because after fuse_main finishes the pthreads
            are joined. We circumvent that problem by just exiting while our
            threads still run. */
-        import std.c.process;
+        import core.stdc.stdlib;
         exit(0);
     }
 } /* extern(C) */
