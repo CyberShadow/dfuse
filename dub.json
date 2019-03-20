@@ -3,7 +3,7 @@
     "description": "A D binding for libfuse",
     "authors": ["David Soria Parra"],
     "copyright": "Copyright (c) 2014, Facebook, Inc.",
-    "homepage": "http://github.com/facebook/dfuse",
+    "homepage": "http://github.com/dlang-community/dfuse",
     "license": "BSL-1.0",
     "dependencies": {},
     "configurations": [{

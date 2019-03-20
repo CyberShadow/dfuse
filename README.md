@@ -8,7 +8,7 @@ filesystems are easy to implement and have access to userland components like
 HTTP libraries, etc. For more information about fuse see: http://fuse.sourceforge.net.
 
 ## Examples
-A simple filesystems implementing a directory listing can be found in the [examples/](https://github.com/facebook/dfuse/tree/master/example) directory.
+A simple filesystems implementing a directory listing can be found in the [example/](https://github.com/dlang-community/dfuse/tree/master/example) directory.
 You can build the examples using:
 ```Shell
 $ make examples
@@ -42,7 +42,7 @@ class MyFS : Operations
 }
 ```
 
-A minimal filesystem implements `Operations.getattr()`, `Operations.readdir()`, `Operations.read()`. See [dfuse/fuse.d](https://github.com/facebook/dfuse/blob/master/source/dfuse/fuse.d) for implementation specific details.
+A minimal filesystem implements `Operations.getattr()`, `Operations.readdir()`, `Operations.read()`. See [dfuse/fuse.d](https://github.com/dlang-community/dfuse/blob/master/source/dfuse/fuse.d) for implementation specific details.
 
 To mount a filesystem use a Fuse object and call mount:
 ```D
@@ -119,12 +119,12 @@ default implementations for all handlers and every method can be invidually
 overwritten to provide an interface.
 
 ## Issues and Bugs
-If you encounter issues or bugs with dfuse, please file an issue on [github](https://github.com/facebook/dfuse/issues). Please ensure that you maintain a constructive feedback atmosphere and if possible attach a reproduction step. If you have any questions, feel free to write to the D mailinglist or ask in IRC.
+If you encounter issues or bugs with dfuse, please file an issue on [github](https://github.com/dlang-community/dfuse/issues). Please ensure that you maintain a constructive feedback atmosphere and if possible attach a reproduction step. If you have any questions, feel free to write to the D mailinglist or ask in IRC.
 
 Pull requests are highly appreciated!
 
 ## Join the dfuse community
-* Website: https://github.com/facebook/dfuse/wiki
+* Website: https://github.com/dlang-community/dfuse/wiki
 * Mailing list: [The D Mailinglist](http://lists.puremagic.com/cgi-bin/mailman/listinfo/digitalmars-d)
 * irc: irc.freenode.net #d
 
