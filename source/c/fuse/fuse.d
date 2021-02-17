@@ -431,7 +431,7 @@ struct fuse_operations
 	 *
 	 * Introduced in version 2.6
 	 */
-    int function(const char*, const timespec) utimens;
+    int function(const char*, const ref timespec[2]) utimens;
 
 	/**
 	 * Map block index within file to block index within device
