@@ -9,6 +9,8 @@
  */
 import dfuse.fuse;
 
+import core.stdc.errno;
+
 import std.algorithm, std.conv, std.stdio;
 
 /**
@@ -32,7 +34,7 @@ class SimpleFS : Operations
             return;
         }
 
-        throw new FuseException(errno.ENOENT);
+        throw new FuseException(ENOENT);
     }
 
     override string[] readdir(const(char)[] path)
@@ -42,7 +44,7 @@ class SimpleFS : Operations
             return ["a", "b"];
         }
 
-        throw new FuseException(errno.ENOENT);
+        throw new FuseException(ENOENT);
     }
 }
 
