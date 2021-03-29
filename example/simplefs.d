@@ -46,6 +46,11 @@ class SimpleFS : Operations
 
         throw new FuseException(ENOENT);
     }
+
+    override bool access(const(char)[] path, int mode)
+    {
+		return true;
+    }
 }
 
 int main(string[] args)
