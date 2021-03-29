@@ -79,6 +79,11 @@ $ dub build -b debug
 to build a debug version
 ```
 
+### Recursive compilation
+- Make sure the dfuse `source` directory is in your compiler search path.
+- `import dfuse.fuse;` in your program.
+- Link against the `fuse` library, e.g. by adding `-L-lfuse` to the compiler's command line, or by adding `pragma(lib, "fuse");` in your program.
+
 ## How dfuse works
 dfuse is a simple D wrapper. It exposes a lowelevel interface to the libfuse C
 functions in c/fuse/fuse.d. The lowlevel interface preserves C types.
