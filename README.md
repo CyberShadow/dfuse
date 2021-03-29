@@ -66,15 +66,16 @@ dfuse requires:
 * DMD/Druntime/Phobos >= 2.065
 
 ## Building dfuse
-dfuse comes with a standard makefile that assumes that DMD (the D-compiler) is
-in your $PATH.
+dfuse comes with a [Dub](https://dub.pm/) configuration file, making it usable as a Dub package.
+
+Alternatively, it is usable with common D recursive compilation tools (`dmd -i` / `rdmd` / `rund`).
 
 ### Linux
 In order to compile dfuse on Linux:
 ```Shell
-$ make dfuse
+$ dub build -b release
 or
-$ make dfuse ENABLE_DEBUG=1
+$ dub build -b debug
 to build a debug version
 ```
 
@@ -89,21 +90,14 @@ the size of the inode.
 
 To build just run
 ```Shell
-$ make dfuse
+$ dub build
 ```
 
 If you want to compile with 64bit inodes you need a at least DMD, Druntime,
 Phobos in version 2.066:
 ```Shell
-$ make dfuse ENABLE_64BIT=1
+$ dub build -c dfuse-osx-64
 ```
-
-### Dub
-dfuse comes with experimental support for [dub](http://code.dlang.org/), a package manager for D. See the dub documentation how to build and use dub.
-
-## Installing dfuse
-At the moment the dfuse makefile doesn't support an install target. It is
-recommended to just include the library in a project at this point.
 
 ## How dfuse works
 dfuse is a simple D wrapper. It exposes a lowelevel interface to the libfuse C
