@@ -8,11 +8,5 @@ targetType "library"
 
 configuration "default" {
 	platforms "osx" "linux"
-        libs "fuse" platform="linux"
-        libs "osxfuse_i32" platform="osx"
-}
-configuration "dfuse-osx-64" {
-	platforms "osx"
-        libs "osxfuse"
-        versions "DARWIN_USE_64_BIT_INODE"
+        libs "fuse"
 }

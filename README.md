@@ -70,33 +70,13 @@ dfuse comes with a [Dub](https://dub.pm/) configuration file, making it usable a
 
 Alternatively, it is usable with common D recursive compilation tools (`dmd -i` / `rdmd` / `rund`).
 
-### Linux
+### Dub
 In order to compile dfuse on Linux:
 ```Shell
 $ dub build -b release
 or
 $ dub build -b debug
 to build a debug version
-```
-
-### MacOS
-MacOS supports two inode sizes which are both supported by OSXfuse, however when
-compiling dfuse you have to be aware which OSXfuse should be linked.
-
-By default dfuse is trying to build with a 32bit inode size and link against
-osxfuse_i32 which is part of OSXfuse for compatibility. Please note that your
-library itself will still be 64bit on a 64bit system. The setting only affects
-the size of the inode.
-
-To build just run
-```Shell
-$ dub build
-```
-
-If you want to compile with 64bit inodes you need a at least DMD, Druntime,
-Phobos in version 2.066:
-```Shell
-$ dub build -c dfuse-osx-64
 ```
 
 ## How dfuse works

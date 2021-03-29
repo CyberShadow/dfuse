@@ -23,8 +23,3 @@ jobs:
       run: |
         dub build
         dub --root=example build
-    - name: Test (64-bit inodes)
-      if: runner.os == 'macOS'
-      run: |
-        dub build -c dfuse-osx-64
-        dub --root=example build --override-config=dfuse/dfuse-osx-64
