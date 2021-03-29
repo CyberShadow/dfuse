@@ -1,0 +1,5 @@
+name "simplefs"
+targetType "executable"
+sourceFiles "simplefs.d"
+
+dependency "dfuse" version="*" path=".."
