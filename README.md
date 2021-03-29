@@ -11,7 +11,8 @@ HTTP libraries, etc. For more information about fuse see: http://fuse.sourceforg
 A simple filesystems implementing a directory listing can be found in the [example/](https://github.com/dlang-community/dfuse/tree/master/example) directory.
 You can build the examples using:
 ```Shell
-$ make examples
+$ cd example
+$ dub build  # or: $ dmd -i -I../source -L-lfuse simplefs.d
 $ mkdir /mnt/simplefs
 $ ./simplefs /mnt/simplefs
 ```
