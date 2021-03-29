@@ -1,4 +1,4 @@
-# dfuse
+# dfuse [![test](https://github.com/dlang-community/dfuse/actions/workflows/test.yml/badge.svg)](https://github.com/dlang-community/dfuse/actions/workflows/test.yml)
 *dfuse* is a [D language binding](http://dlang.org) for the high level
 [fuse](http://fuse.sourceforge.net) library. It allows to write a fuse
 filesystem for Linux or Mac OS (using [osxfuse](http://osxfuse.github.io)) in D.
@@ -11,7 +11,8 @@ HTTP libraries, etc. For more information about fuse see: http://fuse.sourceforg
 A simple filesystems implementing a directory listing can be found in the [example/](https://github.com/dlang-community/dfuse/tree/master/example) directory.
 You can build the examples using:
 ```Shell
-$ make examples
+$ cd example
+$ dub build  # or: $ dmd -i -I../source -L-lfuse simplefs.d
 $ mkdir /mnt/simplefs
 $ ./simplefs /mnt/simplefs
 ```
@@ -42,7 +43,7 @@ class MyFS : Operations
 }
 ```
 
-A minimal filesystem implements `Operations.getattr()`, `Operations.readdir()`, `Operations.read()`. See [dfuse/fuse.d](https://github.com/dlang-community/dfuse/blob/master/source/dfuse/fuse.d) for implementation specific details.
+A minimal filesystem implements `Operations.getattr()`, `Operations.access()`, `Operations.readdir()`, `Operations.read()`. See [dfuse/fuse.d](https://github.com/dlang-community/dfuse/blob/master/source/dfuse/fuse.d) for implementation specific details.
 
 To mount a filesystem use a Fuse object and call mount:
 ```D
@@ -65,44 +66,23 @@ dfuse requires:
 * DMD/Druntime/Phobos >= 2.065
 
 ## Building dfuse
-dfuse comes with a standard makefile that assumes that DMD (the D-compiler) is
-in your $PATH.
+dfuse comes with a [Dub](https://dub.pm/) configuration file, making it usable as a Dub package.
 
-### Linux
+Alternatively, it is usable with common D recursive compilation tools (`dmd -i` / `rdmd` / `rund`).
+
+### Dub
 In order to compile dfuse on Linux:
 ```Shell
-$ make dfuse
+$ dub build -b release
 or
-$ make dfuse ENABLE_DEBUG=1
+$ dub build -b debug
 to build a debug version
 ```
 
-### MacOS
-MacOS supports two inode sizes which are both supported by OSXfuse, however when
-compiling dfuse you have to be aware which OSXfuse should be linked.
-
-By default dfuse is trying to build with a 32bit inode size and link against
-osxfuse_i32 which is part of OSXfuse for compatibility. Please note that your
-library itself will still be 64bit on a 64bit system. The setting only affects
-the size of the inode.
-
-To build just run
-```Shell
-$ make dfuse
-```
-
-If you want to compile with 64bit inodes you need a at least DMD, Druntime,
-Phobos in version 2.066:
-```Shell
-$ make dfuse ENABLE_64BIT=1
-```
-
-### Dub
-dfuse comes with experimental support for [dub](http://code.dlang.org/), a package manager for D. See the dub documentation how to build and use dub.
-
-## Installing dfuse
-At the moment the dfuse makefile doesn't support an install target. It is
-recommended to just include the library in a project at this point.
+### Recursive compilation
+- Make sure the dfuse `source` directory is in your compiler search path.
+- `import dfuse.fuse;` in your program.
+- Link against the `fuse` library, e.g. by adding `-L-lfuse` to the compiler's command line, or by adding `pragma(lib, "fuse");` in your program.
 
 ## How dfuse works
 dfuse is a simple D wrapper. It exposes a lowelevel interface to the libfuse C

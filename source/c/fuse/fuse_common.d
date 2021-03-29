@@ -22,7 +22,7 @@ enum FUSE_MINOR_VERSION = 9;
 auto FUSE_MAKE_VERSION(Maj, Min)(Maj maj, Min min) { return ((maj) * 10 + (min)); }
 enum FUSE_VERSION = FUSE_MAKE_VERSION(FUSE_MAJOR_VERSION, FUSE_MINOR_VERSION);
 
-static assert(_FILE_OFFSET_BITS == 64);
+version (linux) static assert(_FILE_OFFSET_BITS == 64);
 
 extern (C):
 
