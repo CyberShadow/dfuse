@@ -1,4 +1,4 @@
-# dfuse
+# dfuse [![test](https://github.com/dlang-community/dfuse/actions/workflows/test.yml/badge.svg)](https://github.com/dlang-community/dfuse/actions/workflows/test.yml)
 *dfuse* is a [D language binding](http://dlang.org) for the high level
 [fuse](http://fuse.sourceforge.net) library. It allows to write a fuse
 filesystem for Linux or Mac OS (using [osxfuse](http://osxfuse.github.io)) in D.
