@@ -6,11 +6,8 @@ homepage "https://github.com/dlang-community/dfuse"
 license "BSL-1.0"
 targetType "library"
 
-configuration "dfuse-osx" {
-	platforms "osx"
-        libs "osxfuse_i32"
-}
-configuration "dfuse-linux" {
-	platforms "linux"
-        libs "fuse"
+configuration "default" {
+	platforms "osx" "linux"
+        libs "fuse" platform="linux"
+        libs "osxfuse_i32" platform="osx"
 }
