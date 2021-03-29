@@ -1,0 +1,30 @@
+name: test
+on: [ push, pull_request ]
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-20.04, macos-10.15]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v2
+    - uses: dlang-community/setup-dlang@v1
+      with:
+        compiler: dmd-2.096.0
+    - name: Setup (Linux)
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt install libfuse-dev
+    - name: Setup (macOS)
+      if: runner.os == 'macOS'
+      run: |
+        brew install --cask osxfuse
+    - name: Test
+      run: |
+        dub build
+        dub --root=example build
+    - name: Test (64-bit inodes)
+      if: runner.os == 'macOS'
+      run: |
+        dub build -c dfuse-osx-64
+        dub --root=example build --override-config=dfuse/dfuse-osx-64
